@@ -20,7 +20,6 @@ public class Product {
     @Size(min = 3, max = 100)
     private String name;
     @NotBlank
-    @Size(min = 3, max = 500)
     private String avatarProduct;
     @NotBlank
     @Size(min = 3,  max = 10000)
@@ -29,7 +28,7 @@ public class Product {
     @NotNull
     private Double price;
 
-    @NotBlank
+    @NotNull
     private LocalDate dateOfManufacture;
 
     public Product(Long id, String name, String avatarProduct, String description) {
@@ -47,6 +46,8 @@ public class Product {
         this.price = price;
         this.dateOfManufacture = dateOfManufacture;
     }
+
+
 
     public Product(String name, String avatarProduct, String description, Double price, LocalDate dateOfManufacture) {
         this.name = name;

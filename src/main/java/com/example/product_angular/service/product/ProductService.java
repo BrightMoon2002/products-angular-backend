@@ -1,5 +1,6 @@
 package com.example.product_angular.service.product;
 
+import com.example.product_angular.dto.ProductDTO;
 import com.example.product_angular.model.Product;
 import com.example.product_angular.repository.IProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +42,10 @@ public class ProductService implements IProductService{
     @Override
     public boolean existsByName(String nameProduct) {
         return productRepository.existsByName(nameProduct);
+    }
+
+    @Override
+    public Iterable<ProductDTO> findAllProductDTO() {
+        return productRepository.findAllProductDTO();
     }
 }
