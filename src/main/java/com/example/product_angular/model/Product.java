@@ -2,7 +2,9 @@ package com.example.product_angular.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "products", uniqueConstraints = {
@@ -23,6 +25,12 @@ public class Product {
     @NotBlank
     @Size(min = 3,  max = 10000)
     private String description;
+
+    @NotNull
+    private Double price;
+
+    @NotBlank
+    private LocalDate dateOfManufacture;
 
     public Product(Long id, String name, String avatarProduct, String description) {
         this.id = id;
