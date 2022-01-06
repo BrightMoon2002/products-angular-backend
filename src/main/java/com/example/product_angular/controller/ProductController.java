@@ -82,7 +82,7 @@ public class ProductController {
                 productService.save(productOptional.get());
                 return new ResponseEntity<>(new ResponseMessage("yes"), HttpStatus.OK);
             }
-            return new ResponseEntity<>(new ResponseMessage("no_name_category"), HttpStatus.OK);
+            return new ResponseEntity<>(new ResponseMessage("no_name_product"), HttpStatus.OK);
         }
         productOptional.get().setAvatarProduct(product.getName());
         productOptional.get().setAvatarProduct(product.getAvatarProduct());
