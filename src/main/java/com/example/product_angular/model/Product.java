@@ -39,6 +39,23 @@ public class Product {
         this.description = description;
     }
 
+    public Product(Long id, String name, String avatarProduct, String description, Double price, LocalDate dateOfManufacture) {
+        this.id = id;
+        this.name = name;
+        this.avatarProduct = avatarProduct;
+        this.description = description;
+        this.price = price;
+        this.dateOfManufacture = dateOfManufacture;
+    }
+
+    public Product(String name, String avatarProduct, String description, Double price, LocalDate dateOfManufacture) {
+        this.name = name;
+        this.avatarProduct = avatarProduct;
+        this.description = description;
+        this.price = price;
+        this.dateOfManufacture = dateOfManufacture;
+    }
+
     public Product() {
     }
 
@@ -78,5 +95,21 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public LocalDate getDateOfManufacture() {
+        return dateOfManufacture;
+    }
+
+    public void setDateOfManufacture(LocalDate dateOfManufacture) {
+        this.dateOfManufacture = dateOfManufacture;
     }
 }
