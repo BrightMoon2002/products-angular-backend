@@ -59,6 +59,7 @@ public class ProductController {
         }
         return new ResponseEntity<>(productOptional.get(), HttpStatus.OK);
     }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteProduct(@PathVariable Long id) {
         Optional<Product> productOptional = productService.findById(id);
@@ -67,8 +68,30 @@ public class ProductController {
         }
         productService.remove(id);
         return new ResponseEntity<>(new ResponseMessage("yes"), HttpStatus.OK);
-        }
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateProductById(@PathVariable Long id, @RequestBody Product product) {
+        Optional<Product> productOptional = productService.findById(id);
+        if (!productOptional.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        if (productService.existsByName(product.getName())) {
+            if (!product.getAvatarProduct().equals(productOptional.get().getAvatarProduct())) {
+                productOptional.get().setAvatarProduct(product.getAvatarProduct());
+                productService.save(productOptional.get());
+                return new ResponseEntity<>(new ResponseMessage("yes"), HttpStatus.OK);
+            }
+            return new ResponseEntity<>(new ResponseMessage("no_name_category"), HttpStatus.OK);
+        }
+        productOptional.get().setAvatarProduct(product.getName());
+        productOptional.get().setAvatarProduct(product.getAvatarProduct());
+        productService.save(productOptional.get());
+        return new ResponseEntity<>(new ResponseMessage("yes"), HttpStatus.OK);
+    }
+}
+
+
 
 
 
